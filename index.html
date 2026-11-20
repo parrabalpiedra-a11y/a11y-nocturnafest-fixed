@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nocturna Fest · 9, 10 y 11 de julio de 2027 · Almería</title>
+<meta name="description" content="Festival de música frente al mar en Almería. Cartel, entradas e información práctica.">
+<style>
+  :root {
+    --noche: #0d0618; --noche2: #140b33; --panel: #1c1236; --borde: #4a3b80;
+    --rosa: #ff5c9d; --violeta: #a58bff; --menta: #3ff0d4; --sol: #ffd500; --naranja: #ff8a3d;
+    --texto: #e9e4f7; --suave: #c4bbe3;
+    --foco: #ffd500;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --display: "Arial Black", "Helvetica Neue", Impact, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+  body { margin: 0; font-family: var(--sans); font-size: 1.0625rem; line-height: 1.6; background: var(--noche); color: var(--texto); }
+  .cont { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  img { display: block; max-width: 100%; height: auto; }
+  a { color: var(--menta); text-underline-offset: 3px; }
+  a:hover { color: #fff; }
+
+  /* Foco siempre visible */
+  :focus-visible { outline: 3px solid var(--foco); outline-offset: 3px; border-radius: 6px; }
+
+  [id] { scroll-margin-top: 100px; }
+  .visualmente-oculto { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+  .saltar { position: absolute; left: 16px; top: -100px; background: var(--sol); color: #1a1200; padding: 12px 18px; border-radius: 8px; font-weight: 700; z-index: 100; text-decoration: none; }
+  .saltar:focus { top: 16px; }
+
+  button { font: inherit; cursor: pointer; }
+
+  .aviso { background: linear-gradient(90deg, #b3125a, #5a2bd1); color: #fff; text-align: center; font-size: .9rem; padding: 8px 16px; }
+
+  /* Cabecera */
+  header.top { background: rgba(13,6,24,.95); border-bottom: 1px solid var(--borde); position: sticky; top: 0; z-index: 10; }
+  .top .cont { min-height: 74px; display: flex; align-items: center; gap: 16px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 900; font-size: 1.35rem; letter-spacing: .04em; color: #fff; text-decoration: none; min-height: 44px; }
+  .logo svg { width: 32px; height: 32px; flex: none; }
+  .menu { display: flex; gap: 6px; margin: 0 0 0 40px; padding: 0; list-style: none; }
+  .menu a { display: block; color: var(--texto); font-size: .9rem; text-transform: uppercase; letter-spacing: .08em; text-decoration: none; padding: 12px 12px; border-radius: 8px; }
+  .menu a:hover { color: var(--menta); }
+  .acciones-top { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  .btn-ico { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: 1px solid transparent; border-radius: 10px; color: var(--texto); position: relative; text-decoration: none; }
+  .btn-ico:hover { border-color: var(--borde); }
+  .btn-ico svg { width: 22px; height: 22px; }
+  .contador { position: absolute; top: 2px; right: 0; background: var(--rosa); color: #1a0010; font-size: .75rem; font-weight: 700; border-radius: 9px; min-width: 20px; padding: 0 5px; text-align: center; }
+  .comprar-top { background: var(--sol); color: #1a1200; font-weight: 800; font-size: .9rem; padding: 12px 20px; border-radius: 999px; text-transform: uppercase; letter-spacing: .05em; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+  .comprar-top:hover { color: #1a1200; background: #ffe24d; }
+  .btn-menu { display: none; }
+
+  /* Menú móvil */
+  #panel { position: fixed; inset: 0; background: var(--noche2); z-index: 40; padding: 24px; display: none; }
+  #panel.abierto { display: block; }
+  #panel .cerrar { display: flex; margin-left: auto; align-items: center; gap: 8px; background: transparent; color: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: 10px 16px; min-height: 44px; }
+  #panel ul { list-style: none; padding: 0; margin: 30px 0 0; }
+  #panel li a { display: block; color: #fff; font-family: var(--display); font-weight: 900; font-size: 1.9rem; padding: 12px 0; text-decoration: none; }
+
+  /* Portada */
+  .hero { position: relative; overflow: hidden; background: radial-gradient(ellipse at 70% 30%, #3a1670 0%, var(--noche) 60%); }
+  .hero .cont { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 30px; padding-top: 60px; padding-bottom: 60px; }
+  .fecha { display: block; font-size: .9rem; letter-spacing: .18em; text-transform: uppercase; color: var(--menta); margin-bottom: 18px; }
+  .hero h1 { font-family: var(--display); font-weight: 900; font-size: clamp(3rem, 8vw, 5.75rem); line-height: .95; color: #fff; margin: 0 0 18px; }
+  .hero h1 span { color: var(--sol); }
+  .lema { font-size: 1.2rem; color: var(--texto); margin: 0 0 26px; }
+  .cuenta { display: flex; gap: 12px; margin: 0 0 30px; padding: 0; list-style: none; }
+  .cuenta li { background: var(--panel); border: 1px solid var(--borde); border-radius: 14px; min-width: 86px; padding: 12px 8px; text-align: center; }
+  .cuenta b { display: block; font-family: var(--display); font-weight: 900; font-size: 2rem; color: #fff; line-height: 1.2; }
+  .cuenta span { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--suave); }
+  .ctas { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .cta { background: var(--sol); color: #1a1200; font-weight: 800; padding: 16px 30px; border-radius: 999px; font-size: 1rem; text-transform: uppercase; letter-spacing: .05em; text-decoration: none; min-height: 48px; display: inline-flex; align-items: center; }
+  .cta:hover { color: #1a1200; background: #ffe24d; }
+  .cta.sec { background: transparent; color: #fff; border: 2px solid var(--violeta); }
+
+  /* Cinta con pausa */
+  .cinta-wrap { position: relative; margin-top: 10px; }
+  .cinta { background: var(--rosa); overflow: hidden; white-space: nowrap; padding: 14px 0; }
+  .cinta p { display: inline-block; margin: 0; animation: correr 18s linear infinite; font-family: var(--display); font-weight: 900; font-size: 1.35rem; color: #1a0010; }
+  .cinta.pausada p { animation-play-state: paused; }
+  .cinta span { margin: 0 26px; }
+  @keyframes correr { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .pausa { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: #1a0010; color: #fff; border: 2px solid #fff; border-radius: 999px; padding: 8px 14px; font-size: .85rem; min-height: 44px; }
+
+  main section { padding: 96px 0; scroll-margin-top: 80px; }
+  .cab-seccion { display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; }
+  h2 { font-family: var(--display); font-weight: 900; color: #fff; font-size: clamp(2.2rem, 5vw, 3.25rem); line-height: 1.1; margin: 0; }
+  h3 { margin: 0; }
+
+  /* Cartel */
+  .dias { display: flex; flex-wrap: wrap; gap: 8px; }
+  .dia { font-size: .9rem; padding: 10px 18px; min-height: 44px; border-radius: 999px; border: 2px solid var(--borde); background: transparent; color: var(--texto); text-transform: uppercase; letter-spacing: .08em; }
+  .dia[aria-pressed="true"] { background: #fff; color: var(--noche); border-color: #fff; font-weight: 700; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 0; padding: 0; list-style: none; }
+  .card { background: var(--panel); border-radius: 20px; overflow: hidden; border: 1px solid var(--borde); }
+  .card[hidden] { display: none; }
+  .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; }
+  .card .cuerpo { padding: 14px 16px 18px 20px; }
+  .card .fila { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .card h3 { font-family: var(--display); font-weight: 900; font-size: 1.5rem; color: #fff; }
+  .card .meta { font-size: .95rem; margin: 4px 0 0; color: var(--suave); }
+  .fav { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--borde); background: transparent; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+  .fav svg { width: 22px; height: 22px; fill: none; stroke: var(--rosa); stroke-width: 2; }
+  .fav[aria-pressed="true"] svg { fill: var(--rosa); }
+
+  /* Entradas */
+  .entradas { background: var(--noche2); }
+  .tickets { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 0; padding: 0; list-style: none; }
+  .ticket { background: var(--panel); border: 1px solid var(--borde); border-radius: 22px; padding: 28px; position: relative; display: flex; flex-direction: column; }
+  .ticket.destacada { border: 2px solid var(--rosa); }
+  .ticket h3 { font-family: var(--display); font-weight: 900; font-size: 1.4rem; color: #fff; }
+  .estado { display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; font-weight: 700; margin-top: 8px; padding: 4px 10px; border-radius: 999px; background: rgba(255,255,255,.06); }
+  .estado::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+  .verde { color: #4be38f; } .ambar { color: #ffc24d; } .rojo { color: #ff8080; }
+  .precio { font-family: var(--display); font-weight: 900; font-size: 3.2rem; color: #fff; margin: 14px 0 0; line-height: 1.1; }
+  .gastos { font-size: .9rem; color: var(--suave); margin: 4px 0 0; }
+  .ticket ul { padding-left: 1.2em; margin: 14px 0 22px; font-size: 1rem; }
+  .etiqueta-top { position: absolute; top: -14px; right: 22px; background: var(--rosa); color: #1a0010; font-size: .8rem; font-weight: 700; padding: 4px 12px; border-radius: 999px; text-transform: uppercase; letter-spacing: .08em; }
+  .cantidad { margin-top: auto; }
+  .cantidad .fila { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .paso { width: 44px; height: 44px; border: 2px solid var(--borde); background: var(--noche2); color: #fff; border-radius: 10px; font-size: 1.3rem; line-height: 1; }
+  .cantidad output { min-width: 32px; text-align: center; font-size: 1.15rem; font-weight: 700; }
+  .anadir { margin-left: auto; background: var(--rosa); color: #1a0010; border: 0; border-radius: 10px; padding: 0 18px; min-height: 44px; font-weight: 800; }
+  .anadir:disabled { background: #574d78; color: #e9e4f7; cursor: not-allowed; }
+
+  /* Compra */
+  .compra .cont { display: grid; grid-template-columns: 1.15fr .85fr; gap: 50px; }
+  .form { background: var(--panel); border: 1px solid var(--borde); border-radius: 22px; padding: 36px; }
+  .temporizador { background: #2a1440; color: var(--texto); font-size: 1rem; padding: 14px 16px; border-radius: 10px; margin: 18px 0 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+  .temporizador button { background: transparent; color: #fff; border: 2px solid var(--violeta); border-radius: 8px; padding: 8px 14px; min-height: 44px; }
+  .campos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .campo label, fieldset legend { display: block; font-weight: 700; color: #fff; margin-bottom: 6px; }
+  .campo .pista { display: block; font-size: .85rem; color: var(--suave); margin: -2px 0 6px; }
+  .form input, .form select { display: block; width: 100%; padding: 12px 14px; min-height: 48px; border: 2px solid #6a5aa8; border-radius: 10px; font: inherit; color: #fff; background: var(--noche2); }
+  .form input[aria-invalid="true"], .form select[aria-invalid="true"] { border-color: #ff8080; }
+  .error { display: block; color: #ffb3b3; font-size: .9rem; margin-top: 6px; }
+  .error:empty { display: none; }
+  .error:not(:empty)::before { content: "⚠ "; }
+  fieldset { border: 0; padding: 0; margin: 18px 0 0; }
+  .fecha-nac { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .fecha-nac label { font-weight: 400; font-size: .9rem; color: var(--suave); margin-bottom: 4px; }
+  .resumen-errores { background: #3a1020; border: 2px solid #ff8080; border-radius: 12px; padding: 14px 18px; margin: 0 0 18px; }
+  .resumen-errores[hidden] { display: none; }
+  .resumen-errores h3 { font-size: 1.05rem; color: #fff; margin-bottom: 6px; }
+  .resumen-errores ul { margin: 0; padding-left: 1.2em; }
+  .pie-form { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 24px; flex-wrap: wrap; }
+  .legal { font-size: .9rem; color: var(--suave); max-width: 340px; margin: 0; }
+  .pagar { padding: 0 28px; min-height: 52px; font-size: 1.05rem; background: var(--sol); color: #1a1200; border: 0; border-radius: 12px; font-weight: 800; }
+  .estado-form { margin: 16px 0 0; font-weight: 700; color: #7dffb0; }
+  .resumen dl { margin: 0; }
+  .resumen .linea { border-top: 1px solid var(--borde); padding: 16px 0; display: flex; justify-content: space-between; gap: 12px; }
+  .resumen dt { color: var(--suave); }
+  .resumen dd { margin: 0; color: #fff; font-weight: 700; }
+
+  /* Info */
+  .info-sec .cont { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; }
+  .mapa { border-radius: 22px; overflow: hidden; border: 1px solid var(--borde); margin: 24px 0 0; }
+  .mapa figcaption { padding: 14px 18px; background: var(--panel); font-size: .95rem; }
+  .faq details { border-top: 1px solid var(--borde); }
+  .faq summary { padding: 16px 0; font-size: 1.05rem; color: #fff; cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 16px; min-height: 44px; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--menta); }
+  .faq details[open] summary::after { content: "−"; }
+  .faq details p { margin: 0 0 16px; color: var(--texto); }
+
+  /* Boletín y pie */
+  .boletin { background: linear-gradient(90deg, #3a1670, #5b1a5e); }
+  .boletin .cont { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-top: 50px; padding-bottom: 50px; flex-wrap: wrap; }
+  .boletin h2 { font-size: 2rem; }
+  .boletin p { margin: 6px 0 0; }
+  .boletin form { display: flex; flex-wrap: wrap; gap: 8px; align-items: end; }
+  .boletin label { display: block; font-weight: 700; margin-bottom: 6px; width: 100%; }
+  .boletin input { background: rgba(0,0,0,.35); border: 2px solid #c4a8e8; color: #fff; padding: 0 18px; min-height: 48px; border-radius: 999px; width: 300px; font: inherit; }
+  .boletin button { background: #fff; color: #2a1040; padding: 0 22px; min-height: 48px; border-radius: 999px; border: 0; font-weight: 800; }
+  .boletin .msg { width: 100%; margin: 6px 0 0; min-height: 1.5em; }
+  footer.pie { background: #07030d; color: var(--suave); font-size: .95rem; }
+  .pie .cont.cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 30px; padding-top: 50px; padding-bottom: 30px; }
+  .pie h2 { font-family: var(--sans); color: #fff; font-size: .9rem; margin: 0 0 10px; text-transform: uppercase; letter-spacing: .12em; }
+  .pie ul { list-style: none; margin: 0; padding: 0; }
+  .pie li a, .pie li span { display: inline-block; padding: 12px 0; color: var(--suave); }
+  .pie a:hover { color: #fff; }
+  .redes { display: flex; gap: 6px; margin-top: 10px; }
+  .redes a { width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid var(--borde); }
+  .redes svg { width: 20px; height: 20px; }
+  .legalitos { border-top: 1px solid #2a1f45; padding-top: 18px; padding-bottom: 24px; }
+  .legalitos ul { display: flex; flex-wrap: wrap; gap: 4px 20px; }
+
+  /* Pop-up de preventa */
+  dialog { background: var(--noche2); color: var(--texto); border: 1px solid var(--borde); border-radius: 24px; padding: 0; width: min(760px, 92vw); max-height: 90vh; }
+  dialog::backdrop { background: rgba(5,2,10,.8); }
+  .dialogo { display: grid; grid-template-columns: 1fr 1fr; }
+  .dialogo img { height: 100%; object-fit: cover; }
+  .dialogo .texto { padding: 40px 36px 32px; }
+  .dialogo h2 { font-size: 2rem; margin-bottom: 12px; }
+  .dialogo label { display: block; font-weight: 700; margin: 18px 0 6px; }
+  .dialogo input { width: 100%; min-height: 48px; padding: 0 14px; border: 2px solid #6a5aa8; background: var(--noche); color: #fff; border-radius: 10px; font: inherit; }
+  .dialogo .botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .dialogo .quiero { background: var(--sol); color: #1a1200; border: 0; padding: 0 20px; min-height: 48px; border-radius: 10px; font-weight: 800; }
+  .dialogo .cerrar { background: transparent; color: #fff; border: 2px solid var(--violeta); padding: 0 20px; min-height: 48px; border-radius: 10px; }
+
+  /* Cookies */
+  #cookies { background: #fff; color: #2a2340; font-size: .95rem; }
+  #cookies .cont { display: flex; align-items: center; gap: 24px; padding-top: 16px; padding-bottom: 16px; flex-wrap: wrap; }
+  #cookies .txt { flex: 1 1 420px; }
+  #cookies[hidden] { display: none; }
+  #cookies h2 { font-family: var(--sans); color: #1a1230; font-size: 1.1rem; margin: 0 0 6px; }
+  #cookies p { margin: 0; }
+  #cookies .botones { display: flex; gap: 10px; }
+  #cookies button { min-width: 140px; min-height: 48px; border-radius: 999px; font-weight: 700; font-size: 1rem; }
+  #cookies .rechazar { background: #fff; color: #1a1230; border: 2px solid #1a1230; }
+  #cookies .aceptar { background: #1a1230; color: #fff; border: 2px solid #1a1230; }
+
+  /* ======================= MÓVIL ======================= */
+  @media (max-width: 760px) {
+    .cont { padding: 0 18px; }
+    .menu, .comprar-top.escritorio { display: none; }
+    .btn-menu { display: inline-flex; }
+    .logo { font-size: 1.1rem; }
+    .acciones-top { gap: 2px; }
+
+    .hero .cont { grid-template-columns: 1fr; padding-top: 28px; padding-bottom: 40px; gap: 10px; }
+    .hero .ilustracion { max-width: 280px; margin: 0 auto; }
+    .cuenta { flex-wrap: wrap; }
+    .cuenta li { min-width: 0; flex: 1; }
+    .cuenta b { font-size: 1.5rem; }
+    .pausa { position: static; transform: none; display: block; margin: 10px 18px 0 auto; }
+
+    main section { padding: 60px 0; }
+    .cards, .tickets { grid-template-columns: 1fr; }
+    .card { display: grid; grid-template-columns: 110px 1fr; align-items: center; }
+    .card img { height: 100%; }
+    .card .cuerpo { padding: 12px 10px 12px 14px; }
+    .card h3 { font-size: 1.2rem; }
+
+    .compra .cont, .info-sec .cont { grid-template-columns: 1fr; gap: 40px; }
+    .form { padding: 22px 18px; }
+    .campos { grid-template-columns: 1fr; }
+    .boletin form, .boletin input { width: 100%; }
+    .pie .cont.cols { grid-template-columns: 1fr 1fr; }
+
+    .dialogo { grid-template-columns: 1fr; }
+    .dialogo img { height: 150px; }
+    .dialogo .texto { padding: 22px; }
+
+    #cookies .botones { width: 100%; }
+    #cookies button { flex: 1; min-width: 0; }
+  }
+
+  @media (max-width: 380px) {
+    .card { grid-template-columns: 1fr; }
+    .fecha-nac { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<section id="cookies" aria-labelledby="t-cookies" hidden>
+  <div class="cont">
+    <div class="txt">
+      <h2 id="t-cookies">Cookies</h2>
+      <p>Usamos cookies propias para que la web funcione y, si aceptas, de terceros para medir visitas y mostrarte publicidad.</p>
+    </div>
+    <div class="botones">
+      <button class="rechazar" type="button" data-respuesta="rechazar">Rechazar</button>
+      <button class="aceptar" type="button" data-respuesta="aceptar">Aceptar</button>
+    </div>
+  </div>
+</section>
+
+<div class="aviso" role="note">Últimas entradas de la fase 2: después suben de precio.</div>
+
+<header class="top">
+  <div class="cont">
+    <a class="logo" href="#inicio">
+      <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3d8b"/><stop offset="1" stop-color="#ffd500"/></linearGradient></defs><circle cx="16" cy="16" r="15" fill="url(#lg)"/><circle cx="20" cy="13" r="12" fill="#0d0618"/></svg>
+      NOCTURNA FEST
+    </a>
+    <nav aria-label="Principal">
+      <ul class="menu">
+        <li><a href="#cartel">Cartel</a></li>
+        <li><a href="#entradas">Entradas</a></li>
+        <li><a href="#info">Cómo llegar</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+      </ul>
+    </nav>
+    <div class="acciones-top">
+      <a class="btn-ico" href="#compra" aria-label="Carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M3 9h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4z"/><path d="M14 9v10" stroke-dasharray="2 2"/></svg>
+        <span class="contador" id="contador" aria-hidden="true">0</span>
+      </a>
+      <button class="btn-ico btn-menu" id="abrir-menu" aria-expanded="false" aria-controls="panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <span class="visualmente-oculto">Menú</span>
+      </button>
+      <a class="comprar-top escritorio" href="#entradas">Entradas</a>
+    </div>
+  </div>
+</header>
+
+<div id="panel" role="dialog" aria-modal="true" aria-label="Menú">
+  <button class="cerrar" id="cerrar-menu">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    Cerrar menú
+  </button>
+  <nav aria-label="Principal (móvil)">
+    <ul>
+      <li><a href="#cartel">Cartel</a></li>
+      <li><a href="#entradas">Entradas</a></li>
+      <li><a href="#compra">Comprar</a></li>
+      <li><a href="#info">Cómo llegar</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- Avisos para lectores de pantalla -->
+<p class="visualmente-oculto" id="anuncio" aria-live="polite"></p>
+
+<main id="contenido" tabindex="-1">
+
+  <div class="hero" id="inicio">
+    <div class="cont">
+      <div>
+        <p class="fecha"><time datetime="2027-07-09">9</time>, <time datetime="2027-07-10">10</time> y <time datetime="2027-07-11">11 de julio de 2027</time> · Almería</p>
+        <h1>NOCTURNA <span>FEST</span></h1>
+        <p class="lema">Tres noches de música frente al mar, con más de 20 artistas en tres escenarios.</p>
+        <h2 class="visualmente-oculto">Cuenta atrás</h2>
+        <p class="visualmente-oculto" id="cuenta-texto"></p>
+        <ul class="cuenta" aria-hidden="true">
+          <li><b id="cd-d">0</b><span>días</span></li>
+          <li><b id="cd-h">00</b><span>horas</span></li>
+          <li><b id="cd-m">00</b><span>min</span></li>
+          <li><b id="cd-s">00</b><span>seg</span></li>
+        </ul>
+        <div class="ctas">
+          <a class="cta" href="#entradas">Comprar entradas</a>
+          <a class="cta sec" href="#cartel">Ver cartel</a>
+        </div>
+      </div>
+      <div class="ilustracion"><img src="img/hero.svg" alt="" width="600" height="560"></div>
+    </div>
+    <div class="cinta-wrap">
+      <div class="cinta" id="cinta">
+        <p aria-hidden="true"><span>LÚA VEGA</span>✦<span>LOS SATÉLITES</span>✦<span>KAIRO</span>✦<span>NÉBULA 303</span>✦<span>MALVA</span>✦<span>LAS MAREAS</span>✦<span>LÚA VEGA</span>✦<span>LOS SATÉLITES</span>✦<span>KAIRO</span>✦<span>NÉBULA 303</span>✦<span>MALVA</span>✦<span>LAS MAREAS</span>✦</p>
+      </div>
+      <button class="pausa" id="pausa" aria-pressed="false">Pausar animación</button>
+    </div>
+  </div>
+
+  <section id="cartel" aria-labelledby="t-cartel">
+    <div class="cont">
+      <div class="cab-seccion">
+        <h2 id="t-cartel">Cartel</h2>
+        <div class="dias" role="group" aria-label="Filtrar el cartel por día">
+          <button class="dia" aria-pressed="true" data-dia="todo">Todos</button>
+          <button class="dia" aria-pressed="false" data-dia="vie">Viernes</button>
+          <button class="dia" aria-pressed="false" data-dia="sab">Sábado</button>
+          <button class="dia" aria-pressed="false" data-dia="dom">Domingo</button>
+        </div>
+      </div>
+      <ul class="cards">
+        <li class="card" data-dia="vie"><img src="img/artista1.svg" alt="" width="400" height="400"><div class="cuerpo"><div class="fila"><h3>Lúa Vega</h3><button class="fav" aria-pressed="false" aria-label="Guardar Lúa Vega en favoritos"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-8-5.3-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5.7-8 11-8 11z"/></svg></button></div><p class="meta">Pop · Viernes 23:30 · Escenario Mar</p></div></li>
+        <li class="card" data-dia="vie"><img src="img/artista2.svg" alt="" width="400" height="400"><div class="cuerpo"><div class="fila"><h3>Los Satélites</h3><button class="fav" aria-pressed="false" aria-label="Guardar Los Satélites en favoritos"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-8-5.3-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5.7-8 11-8 11z"/></svg></button></div><p class="meta">Indie · Viernes 21:00 · Escenario Luna</p></div></li>
+        <li class="card" data-dia="sab"><img src="img/artista3.svg" alt="" width="400" height="400"><div class="cuerpo"><div class="fila"><h3>KAIRO</h3><button class="fav" aria-pressed="false" aria-label="Guardar KAIRO en favoritos"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-8-5.3-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5.7-8 11-8 11z"/></svg></button></div><p class="meta">Urbano · Sábado 00:15 · Escenario Mar</p></div></li>
+        <li class="card" data-dia="sab"><img src="img/artista4.svg" alt="" width="400" height="400"><div class="cuerpo"><div class="fila"><h3>Nébula 303</h3><button class="fav" aria-pressed="false" aria-label="Guardar Nébula 303 en favoritos"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-8-5.3-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5.7-8 11-8 11z"/></svg></button></div><p class="meta">Electrónica · Sábado 02:00 · Carpa Eclipse</p></div></li>
+        <li class="card" data-dia="dom"><img src="img/artista5.svg" alt="" width="400" height="400"><div class="cuerpo"><div class="fila"><h3>Malva</h3><button class="fav" aria-pressed="false" aria-label="Guardar Malva en favoritos"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-8-5.3-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5.7-8 11-8 11z"/></svg></button></div><p class="meta">Rap · Domingo 22:00 · Escenario Luna</p></div></li>
+        <li class="card" data-dia="dom"><img src="img/artista6.svg" alt="" width="400" height="400"><div class="cuerpo"><div class="fila"><h3>Las Mareas</h3><button class="fav" aria-pressed="false" aria-label="Guardar Las Mareas en favoritos"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 21s-8-5.3-8-11a5 5 0 0 1 8-4 5 5 0 0 1 8 4c0 5.7-8 11-8 11z"/></svg></button></div><p class="meta">Rock · Domingo 23:45 · Escenario Mar</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="entradas" id="entradas" aria-labelledby="t-entradas">
+    <div class="cont">
+      <div class="cab-seccion"><h2 id="t-entradas">Entradas</h2></div>
+      <ul class="tickets">
+        <li class="ticket" data-nombre="Día suelto">
+          <h3>Día suelto</h3>
+          <span class="estado ambar">Quedan pocas</span>
+          <p class="precio">35 €</p>
+          <p class="gastos">+ 3,50 € de gastos de gestión. Menores de 16, acompañados.</p>
+          <ul><li>Acceso un día a elegir</li><li>Zona de food trucks</li></ul>
+          <div class="cantidad">
+            <div class="fila">
+              <button class="paso menos" aria-label="Quitar una entrada de Día suelto">−</button>
+              <output aria-label="Entradas de Día suelto">1</output>
+              <button class="paso mas" aria-label="Añadir una entrada de Día suelto">+</button>
+              <button class="anadir">Añadir al carrito</button>
+            </div>
+          </div>
+        </li>
+        <li class="ticket destacada" data-nombre="Abono 3 días">
+          <span class="etiqueta-top">La más vendida</span>
+          <h3>Abono 3 días</h3>
+          <span class="estado verde">Disponible</span>
+          <p class="precio">69 €</p>
+          <p class="gastos">+ 5 € de gastos de gestión. Pulsera cashless incluida. Menores de 16, acompañados.</p>
+          <ul><li>Los tres días</li><li>Pulsera cashless</li><li>Entrada por puerta rápida</li></ul>
+          <div class="cantidad">
+            <div class="fila">
+              <button class="paso menos" aria-label="Quitar una entrada de Abono 3 días">−</button>
+              <output aria-label="Entradas de Abono 3 días">1</output>
+              <button class="paso mas" aria-label="Añadir una entrada de Abono 3 días">+</button>
+              <button class="anadir">Añadir al carrito</button>
+            </div>
+          </div>
+        </li>
+        <li class="ticket" data-nombre="Abono VIP">
+          <h3>Abono VIP</h3>
+          <span class="estado rojo">Agotado</span>
+          <p class="precio">149 €</p>
+          <p class="gastos">+ 9 € de gastos de gestión. Solo mayores de 18.</p>
+          <ul><li>Los tres días</li><li>Zona VIP con vistas</li><li>Barra y baños propios</li></ul>
+          <div class="cantidad">
+            <div class="fila">
+              <button class="anadir" disabled>Agotado</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="compra" id="compra" aria-labelledby="t-compra">
+    <div class="cont">
+      <form class="form" id="form-compra" novalidate>
+        <h2 id="t-compra">Completa tu compra</h2>
+        <div class="temporizador">
+          <span>Guardamos tus entradas durante <strong id="reloj">15:00</strong> minutos.</span>
+          <button type="button" id="mas-tiempo">Necesito más tiempo</button>
+        </div>
+        <p class="visualmente-oculto" id="aviso-tiempo" role="alert"></p>
+
+        <div class="resumen-errores" id="resumen-errores" tabindex="-1" hidden>
+          <h3>Revisa estos campos:</h3>
+          <ul id="lista-errores"></ul>
+        </div>
+
+        <div class="campos">
+          <div class="campo">
+            <label for="nombre">Nombre y apellidos</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required aria-describedby="e-nombre">
+            <span class="error" id="e-nombre"></span>
+          </div>
+          <div class="campo">
+            <label for="correo">Correo electrónico</label>
+            <span class="pista" id="p-correo">Te enviaremos ahí las entradas.</span>
+            <input id="correo" name="correo" type="email" autocomplete="email" required aria-describedby="p-correo e-correo">
+            <span class="error" id="e-correo"></span>
+          </div>
+          <div class="campo">
+            <label for="telefono">Teléfono</label>
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" required aria-describedby="e-telefono">
+            <span class="error" id="e-telefono"></span>
+          </div>
+          <div class="campo">
+            <label for="codigo">Código postal</label>
+            <input id="codigo" name="codigo" type="text" inputmode="numeric" autocomplete="postal-code" maxlength="5" required aria-describedby="e-codigo">
+            <span class="error" id="e-codigo"></span>
+          </div>
+        </div>
+
+        <fieldset aria-describedby="e-nac">
+          <legend>Fecha de nacimiento</legend>
+          <div class="fecha-nac">
+            <div class="campo">
+              <label for="dia">Día</label>
+              <select id="dia" name="dia" autocomplete="bday-day" required><option value="">Elige</option></select>
+            </div>
+            <div class="campo">
+              <label for="mes">Mes</label>
+              <select id="mes" name="mes" autocomplete="bday-month" required><option value="">Elige</option><option value="1">Enero</option><option value="2">Febrero</option><option value="3">Marzo</option><option value="4">Abril</option><option value="5">Mayo</option><option value="6">Junio</option><option value="7">Julio</option><option value="8">Agosto</option><option value="9">Septiembre</option><option value="10">Octubre</option><option value="11">Noviembre</option><option value="12">Diciembre</option></select>
+            </div>
+            <div class="campo">
+              <label for="anio">Año</label>
+              <select id="anio" name="anio" autocomplete="bday-year" required><option value="">Elige</option></select>
+            </div>
+          </div>
+          <span class="error" id="e-nac"></span>
+        </fieldset>
+
+        <div class="pie-form">
+          <p class="legal">Al pagar aceptas las <a href="#condiciones">condiciones de compra</a> y la <a href="#privacidad">política de privacidad</a>.</p>
+          <button class="pagar" type="submit">Pagar</button>
+        </div>
+        <p class="estado-form" id="estado-form" role="status"></p>
+      </form>
+
+      <div class="resumen">
+        <h2 style="font-size:1.8rem;margin-bottom:16px">Antes de comprar</h2>
+        <dl>
+          <div class="linea"><dt>Apertura de puertas</dt><dd>19:00</dd></div>
+          <div class="linea"><dt>Último concierto</dt><dd>04:00</dd></div>
+          <div class="linea"><dt>Edad mínima</dt><dd>16 años</dd></div>
+          <div class="linea"><dt>Devoluciones</dt><dd>No se admiten</dd></div>
+        </dl>
+        <p><a href="#faq">¿Tienes una entrada de la edición anterior? Consulta cómo canjearla</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-sec" id="info" aria-labelledby="t-info">
+    <div class="cont">
+      <div>
+        <h2 id="t-info">Cómo llegar</h2>
+        <figure class="mapa" style="margin-left:0;margin-right:0">
+          <img src="img/mapa.svg" alt="Mapa del recinto: el festival está junto al paseo marítimo, al sur de la avenida principal." width="600" height="360">
+          <figcaption>Recinto Nocturna Fest, paseo marítimo de Almería.</figcaption>
+        </figure>
+        <p>Habrá lanzaderas desde la estación cada 20 minutos. <a href="#faq">Consulta los horarios de las lanzaderas</a> o <a href="#faq">mira dónde aparcar si vienes en coche</a>.</p>
+      </div>
+      <div class="faq" id="faq">
+        <h2>Preguntas</h2>
+        <details><summary>¿Puedo salir y volver a entrar?</summary><p>Sí, hasta las 00:00 con la pulsera activada.</p></details>
+        <details><summary>¿Hay zona de acampada?</summary><p>No, pero hay acuerdos con alojamientos cercanos.</p></details>
+        <details><summary>¿Puedo llevar comida?</summary><p>Solo agua en botella abierta y sin tapón.</p></details>
+        <details><summary>¿Es accesible el recinto?</summary><p>Hay plataforma elevada y aseos adaptados en cada escenario.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="boletin" aria-labelledby="t-boletin" style="padding:0">
+    <div class="cont">
+      <div>
+        <h2 id="t-boletin">No te pierdas el próximo anuncio</h2>
+        <p>Nuevos artistas, horarios y sorteos de abonos.</p>
+      </div>
+      <form id="form-boletin" novalidate>
+        <label for="correo-boletin">Tu correo electrónico</label>
+        <input id="correo-boletin" type="email" autocomplete="email" required aria-describedby="msg-boletin">
+        <button type="submit">Apuntarme</button>
+        <p class="msg" id="msg-boletin" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie">
+  <div class="cont cols">
+    <div>
+      <p class="logo" style="font-size:1.1rem;margin:0">
+        <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><circle cx="16" cy="16" r="15" fill="#c4bbe3"/><circle cx="20" cy="13" r="12" fill="#07030d"/></svg>
+        NOCTURNA FEST
+      </p>
+      <p>Festival de música independiente frente al mar.</p>
+      <div class="redes">
+        <a href="#" aria-label="Nocturna Fest en Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#c4bbe3" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="#" aria-label="Nocturna Fest en TikTok"><svg viewBox="0 0 24 24" fill="#c4bbe3" aria-hidden="true" focusable="false"><path d="M16 3c.3 2.4 1.8 3.9 4 4v3c-1.5 0-2.9-.4-4-1.2V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V3z"/></svg></a>
+        <a href="#" aria-label="Lista de Nocturna Fest en Spotify"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="#c4bbe3"/><path d="M7.5 9c3.5-1 7.5-.6 10 .9M8 12.2c3-.8 6-.5 8.5.9M8.5 15.2c2.5-.6 5-.4 7 .8" stroke="#07030d" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg></a>
+      </div>
+    </div>
+    <nav aria-labelledby="p-festival"><h2 id="p-festival">Festival</h2><ul><li><a href="#cartel">Cartel</a></li><li><a href="#entradas">Entradas</a></li><li><a href="#info">Cómo llegar</a></li></ul></nav>
+    <nav aria-labelledby="p-ayuda"><h2 id="p-ayuda">Ayuda</h2><ul><li><a href="#faq">Preguntas frecuentes</a></li><li><a href="#">Cambio de titular</a></li><li><a href="#">Contacto</a></li></ul></nav>
+    <nav aria-labelledby="p-trabaja"><h2 id="p-trabaja">Trabaja con nosotros</h2><ul><li><a href="#">Voluntariado</a></li><li><a href="#">Prensa</a></li><li><a href="#">Patrocinio</a></li></ul></nav>
+  </div>
+  <div class="cont legalitos">
+    <ul>
+      <li><span>© 2027 Nocturna Fest</span></li>
+      <li><a href="#" id="privacidad">Privacidad</a></li>
+      <li><a href="#">Aviso legal</a></li>
+      <li><a href="#">Cookies</a></li>
+      <li><a href="#" id="condiciones">Condiciones de compra</a></li>
+      <li><a href="#">Declaración de accesibilidad</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+
+<dialog id="preventa" aria-labelledby="t-preventa">
+  <div class="dialogo">
+    <img src="img/artista1.svg" alt="" width="400" height="400">
+    <form class="texto" method="dialog" id="form-preventa" novalidate>
+      <h2 id="t-preventa">Preventa: entra antes que nadie</h2>
+      <p>Déjanos tu correo y te mandamos el código de preventa.</p>
+      <label for="correo-preventa">Tu correo electrónico</label>
+      <input id="correo-preventa" type="email" autocomplete="email">
+      <div class="botones">
+        <button class="quiero" value="quiero">Quiero el código</button>
+        <button class="cerrar" value="cerrar" formnovalidate>Ahora no</button>
+      </div>
+    </form>
+  </div>
+</dialog>
+
+<script>
+  var anuncio = document.getElementById('anuncio');
+  function anunciar(texto) { anuncio.textContent = ''; setTimeout(function () { anuncio.textContent = texto; }, 50); }
+
+  /* Cookies: se muestran hasta que se responde */
+  var cookies = document.getElementById('cookies');
+  var respuestaCookies = null;
+  try { respuestaCookies = localStorage.getItem('nf-cookies'); } catch (e) {}
+  if (!respuestaCookies) cookies.hidden = false;
+  cookies.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    try { localStorage.setItem('nf-cookies', b.dataset.respuesta); } catch (e) {}
+    cookies.hidden = true;
+    document.getElementById('contenido').focus();
+  });
+
+  /* Pop-up de preventa: diálogo nativo (Escape lo cierra y el foco queda dentro) */
+  var preventa = document.getElementById('preventa');
+  var vistoPreventa = null;
+  try { vistoPreventa = sessionStorage.getItem('nf-preventa'); } catch (e) {}
+  if (!vistoPreventa && typeof preventa.showModal === 'function') {
+    setTimeout(function () { preventa.showModal(); }, 600);
+  }
+  preventa.addEventListener('close', function () {
+    try { sessionStorage.setItem('nf-preventa', '1'); } catch (e) {}
+    if (preventa.returnValue === 'quiero') anunciar('Te enviaremos el código de preventa por correo.');
+  });
+
+  /* Menú móvil */
+  var panel = document.getElementById('panel');
+  var abrirMenu = document.getElementById('abrir-menu');
+  var cerrarMenu = document.getElementById('cerrar-menu');
+  function menu(abrir) {
+    panel.classList.toggle('abierto', abrir);
+    abrirMenu.setAttribute('aria-expanded', abrir);
+    document.body.style.overflow = abrir ? 'hidden' : '';
+    (abrir ? cerrarMenu : abrirMenu).focus();
+  }
+  abrirMenu.addEventListener('click', function () { menu(true); });
+  cerrarMenu.addEventListener('click', function () { menu(false); });
+  panel.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') menu(false);
+    if (e.key === 'Tab') {
+      var f = panel.querySelectorAll('button, a'); var primero = f[0], ultimo = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+      else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+    }
+  });
+  panel.addEventListener('click', function (e) { if (e.target.closest('a')) menu(false); });
+
+  /* Cinta: pausa manual (y parada automática con "reducir movimiento") */
+  var pausa = document.getElementById('pausa');
+  var cinta = document.getElementById('cinta');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    cinta.classList.add('pausada'); pausa.setAttribute('aria-pressed', 'true'); pausa.textContent = 'Reanudar animación';
+  }
+  pausa.addEventListener('click', function () {
+    var parada = cinta.classList.toggle('pausada');
+    pausa.setAttribute('aria-pressed', parada);
+    pausa.textContent = parada ? 'Reanudar animación' : 'Pausar animación';
+  });
+
+  /* Cuenta atrás: la visual va por segundos; la del lector se actualiza una vez por minuto y no interrumpe */
+  var objetivo = new Date('2027-07-09T19:00:00+02:00').getTime();
+  function cuenta() {
+    var d = Math.max(0, objetivo - Date.now());
+    var dd = Math.floor(d / 864e5), hh = Math.floor(d / 36e5) % 24, mm = Math.floor(d / 6e4) % 60, ss = Math.floor(d / 1e3) % 60;
+    document.getElementById('cd-d').textContent = dd;
+    document.getElementById('cd-h').textContent = ('0' + hh).slice(-2);
+    document.getElementById('cd-m').textContent = ('0' + mm).slice(-2);
+    document.getElementById('cd-s').textContent = ('0' + ss).slice(-2);
+    if (ss === 0 || !cuenta.hecho) {
+      document.getElementById('cuenta-texto').textContent = 'Faltan ' + dd + ' días, ' + hh + ' horas y ' + mm + ' minutos para el festival.';
+      cuenta.hecho = true;
+    }
+  }
+  cuenta(); setInterval(cuenta, 1000);
+
+  /* Filtro del cartel */
+  var botonesDia = document.querySelectorAll('.dia');
+  var nombresDia = { todo: 'todos los días', vie: 'el viernes', sab: 'el sábado', dom: 'el domingo' };
+  botonesDia.forEach(function (b) {
+    b.addEventListener('click', function () {
+      botonesDia.forEach(function (o) { o.setAttribute('aria-pressed', o === b); });
+      var n = 0;
+      document.querySelectorAll('.card').forEach(function (c) {
+        var mostrar = b.dataset.dia === 'todo' || c.dataset.dia === b.dataset.dia;
+        c.hidden = !mostrar; if (mostrar) n++;
+      });
+      anunciar('Mostrando ' + n + ' artistas de ' + nombresDia[b.dataset.dia] + '.');
+    });
+  });
+
+  /* Favoritos */
+  document.querySelectorAll('.fav').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var on = b.getAttribute('aria-pressed') !== 'true';
+      b.setAttribute('aria-pressed', on);
+    });
+  });
+
+  /* Entradas y carrito */
+  var total = 0;
+  var contador = document.getElementById('contador');
+  var carrito = document.querySelector('.btn-ico[href="#compra"]');
+  function pintarCarrito() {
+    contador.textContent = total;
+    carrito.setAttribute('aria-label', 'Carrito: ' + total + (total === 1 ? ' entrada' : ' entradas'));
+  }
+  document.querySelectorAll('.ticket').forEach(function (t) {
+    var out = t.querySelector('output');
+    var menos = t.querySelector('.menos'), mas = t.querySelector('.mas'), anadir = t.querySelector('.anadir');
+    if (!out) return;
+    function cambiar(x) { out.textContent = Math.max(1, Math.min(6, parseInt(out.textContent, 10) + x)); }
+    menos.addEventListener('click', function () { cambiar(-1); });
+    mas.addEventListener('click', function () { cambiar(1); });
+    anadir.addEventListener('click', function () {
+      var n = parseInt(out.textContent, 10);
+      total += n; pintarCarrito();
+      anunciar('Añadidas ' + n + ' entradas de ' + t.dataset.nombre + '. Tienes ' + total + ' en el carrito.');
+    });
+  });
+  pintarCarrito();
+
+  /* Desplegables de fecha */
+  var selDia = document.getElementById('dia'), selAnio = document.getElementById('anio');
+  for (var i = 1; i <= 31; i++) selDia.add(new Option(i, i));
+  for (var a = 2011; a >= 1940; a--) selAnio.add(new Option(a, a));
+
+  /* Temporizador: avisa antes de acabar, se puede ampliar y nunca borra lo escrito */
+  var resto = 15 * 60;
+  var reloj = document.getElementById('reloj');
+  var avisoTiempo = document.getElementById('aviso-tiempo');
+  function pintarReloj() { reloj.textContent = Math.floor(resto / 60) + ':' + ('0' + resto % 60).slice(-2); }
+  setInterval(function () {
+    if (resto > 0) resto--;
+    pintarReloj();
+    if (resto === 120) avisoTiempo.textContent = 'Quedan 2 minutos de reserva. Puedes pedir más tiempo con el botón "Necesito más tiempo".';
+    if (resto === 0) avisoTiempo.textContent = 'La reserva ha caducado. Tus datos siguen en el formulario; pulsa "Necesito más tiempo" para volver a reservar.';
+  }, 1000);
+  document.getElementById('mas-tiempo').addEventListener('click', function () {
+    resto += 10 * 60; pintarReloj();
+    avisoTiempo.textContent = 'Añadidos 10 minutos. Ahora tienes ' + reloj.textContent + '.';
+  });
+
+  /* Validación con mensajes de texto */
+  var form = document.getElementById('form-compra');
+  var resumen = document.getElementById('resumen-errores');
+  var lista = document.getElementById('lista-errores');
+  var reglas = [
+    { id: 'nombre', error: 'e-nombre', ok: function (v) { return v.trim().length > 1; }, msg: 'Escribe tu nombre y apellidos.' },
+    { id: 'correo', error: 'e-correo', ok: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }, msg: 'Escribe un correo con el formato nombre@dominio.com.' },
+    { id: 'telefono', error: 'e-telefono', ok: function (v) { return v.replace(/\D/g, '').length >= 9; }, msg: 'Escribe un teléfono de al menos 9 cifras.' },
+    { id: 'codigo', error: 'e-codigo', ok: function (v) { return /^\d{5}$/.test(v); }, msg: 'El código postal tiene 5 cifras.' }
+  ];
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var fallos = [];
+    reglas.forEach(function (r) {
+      var campo = document.getElementById(r.id), err = document.getElementById(r.error);
+      var bien = r.ok(campo.value);
+      campo.setAttribute('aria-invalid', !bien);
+      err.textContent = bien ? '' : r.msg;
+      if (!bien) fallos.push({ id: r.id, msg: r.msg });
+    });
+    var nac = ['dia', 'mes', 'anio'].map(function (id) { return document.getElementById(id); });
+    var nacBien = nac.every(function (s) { return s.value; });
+    nac.forEach(function (s) { s.setAttribute('aria-invalid', !s.value); });
+    document.getElementById('e-nac').textContent = nacBien ? '' : 'Elige día, mes y año de nacimiento.';
+    if (!nacBien) fallos.push({ id: nac.find(function (s) { return !s.value; }).id, msg: 'Elige día, mes y año de nacimiento.' });
+
+    lista.innerHTML = '';
+    var estado = document.getElementById('estado-form');
+    if (fallos.length) {
+      fallos.forEach(function (f) {
+        var li = document.createElement('li'), a = document.createElement('a');
+        a.href = '#' + f.id; a.textContent = f.msg;
+        a.addEventListener('click', function (ev) { ev.preventDefault(); document.getElementById(f.id).focus(); });
+        li.appendChild(a); lista.appendChild(li);
+      });
+      resumen.hidden = false; resumen.focus();
+      estado.textContent = '';
+    } else {
+      resumen.hidden = true;
+      estado.textContent = 'Compra realizada. Te hemos enviado las entradas a ' + document.getElementById('correo').value + '.';
+    }
+  });
+
+  /* Boletín */
+  document.getElementById('form-boletin').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var c = document.getElementById('correo-boletin'), msg = document.getElementById('msg-boletin');
+    var bien = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(c.value);
+    c.setAttribute('aria-invalid', !bien);
+    msg.textContent = bien ? '¡Dentro! Te escribiremos con el próximo anuncio.' : 'Escribe un correo con el formato nombre@dominio.com.';
+    if (!bien) c.focus();
+  });
+</script>
+</body>
+</html>
