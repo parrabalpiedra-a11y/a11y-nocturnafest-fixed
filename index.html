@@ -219,6 +219,21 @@
   #cookies .rechazar { background: #fff; color: #1a1230; border: 2px solid #1a1230; }
   #cookies .aceptar { background: #1a1230; color: #fff; border: 2px solid #1a1230; }
 
+  /* ======================= TABLET (vertical) ======================= */
+  @media (max-width: 900px) {
+    .cont { padding: 0 32px; }
+    .menu { display: none; }
+    .btn-menu { display: inline-flex; }
+
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .tickets { gap: 16px; }
+    .ticket { padding-left: 20px; padding-right: 20px; }
+
+    .compra .cont { grid-template-columns: 1fr; gap: 40px; }
+    .info-sec .cont { gap: 32px; }
+    .pie .cont.cols { grid-template-columns: 1fr 1fr; }
+  }
+
   /* ======================= MÓVIL ======================= */
   @media (max-width: 760px) {
     .cont { padding: 0 18px; }
