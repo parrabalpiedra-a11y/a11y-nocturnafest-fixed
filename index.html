@@ -201,6 +201,7 @@
   .dialogo .texto { padding: 40px 36px 32px; }
   .dialogo h2 { font-size: 2rem; margin-bottom: 12px; }
   .dialogo label { display: block; font-weight: 700; margin: 18px 0 6px; }
+  .dialogo input[aria-invalid="true"] { border-color: #ff8080; }
   .dialogo input { width: 100%; min-height: 48px; padding: 0 14px; border: 2px solid #6a5aa8; background: var(--noche); color: #fff; border-radius: 10px; font: inherit; }
   .dialogo .botones { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
   .dialogo .quiero { background: var(--sol); color: #1a1200; border: 0; padding: 0 20px; min-height: 48px; border-radius: 10px; font-weight: 800; }
@@ -584,7 +585,8 @@
       <h2 id="t-preventa">Preventa: entra antes que nadie</h2>
       <p>Déjanos tu correo y te mandamos el código de preventa.</p>
       <label for="correo-preventa">Tu correo electrónico</label>
-      <input id="correo-preventa" type="email" autocomplete="email">
+      <input id="correo-preventa" type="email" autocomplete="email" required aria-describedby="e-preventa">
+      <span class="error" id="e-preventa" aria-live="polite"></span>
       <div class="botones">
         <button class="quiero" value="quiero">Quiero el código</button>
         <button class="cerrar" value="cerrar" formnovalidate>Ahora no</button>
@@ -616,6 +618,29 @@
   if (!vistoPreventa && typeof preventa.showModal === 'function') {
     setTimeout(function () { preventa.showModal(); }, 600);
   }
+  /* Si el correo está vacío o mal escrito, no se cierra: se explica el error y el foco vuelve al campo */
+  var formPreventa = document.getElementById('form-preventa');
+  var correoPreventa = document.getElementById('correo-preventa');
+  var errorPreventa = document.getElementById('e-preventa');
+  formPreventa.addEventListener('submit', function (e) {
+    if (e.submitter && e.submitter.value === 'cerrar') return;
+    var valor = correoPreventa.value.trim();
+    var mensaje = '';
+    if (!valor) mensaje = 'Escribe tu correo para recibir el código.';
+    else if (!correoPreventa.checkValidity()) mensaje = 'Revisa el correo: debe ser como nombre@ejemplo.com.';
+    if (mensaje) {
+      e.preventDefault();
+      errorPreventa.textContent = mensaje;
+      correoPreventa.setAttribute('aria-invalid', 'true');
+      correoPreventa.focus();
+    }
+  });
+  correoPreventa.addEventListener('input', function () {
+    if (correoPreventa.getAttribute('aria-invalid') === 'true' && correoPreventa.checkValidity()) {
+      correoPreventa.setAttribute('aria-invalid', 'false');
+      errorPreventa.textContent = '';
+    }
+  });
   preventa.addEventListener('close', function () {
     try { sessionStorage.setItem('nf-preventa', '1'); } catch (e) {}
     if (preventa.returnValue === 'quiero') anunciar('Te enviaremos el código de preventa por correo.');
