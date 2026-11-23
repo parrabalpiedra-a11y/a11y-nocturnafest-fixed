@@ -83,7 +83,7 @@
   });
 
   /* Cuenta atrás: la visual va por segundos; la del lector se actualiza una vez por minuto y no interrumpe */
-  var objetivo = new Date('2027-07-09T19:00:00+02:00').getTime();
+  var objetivo = new Date('2027-06-11T19:00:00+02:00').getTime();
   function cuenta() {
     var d = Math.max(0, objetivo - Date.now());
     var dd = Math.floor(d / 864e5), hh = Math.floor(d / 36e5) % 24, mm = Math.floor(d / 6e4) % 60, ss = Math.floor(d / 1e3) % 60;
