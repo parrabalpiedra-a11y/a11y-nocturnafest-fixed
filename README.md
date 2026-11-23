@@ -63,7 +63,6 @@ js/main.js                Comportamiento (pop-up, menú, temporizador, formulari
 img/                      Ilustraciones SVG
 favicon.svg
 tests/                    Tests de accesibilidad con Playwright y axe-core
-docs/capturas/            Capturas del antes y el después usadas en la charla
 docs/presentacion/        Logos usados en la presentación
 .github/workflows/        Integración continua
 ```
