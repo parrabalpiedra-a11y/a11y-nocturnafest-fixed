@@ -1,0 +1,28 @@
+{
+  "name": "a11y-nocturnafest-fixed",
+  "version": "1.0.0",
+  "description": "Nocturna Fest, versión accesible: web de demostración para la charla «Programar para personas, no para pantallas».",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "http-server -p 8080 -c-1 .",
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parrabalpiedra-a11y/a11y-nocturnafest-fixed.git"
+  },
+  "author": "Paula Arrabal Piedra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/parrabalpiedra-a11y/a11y-nocturnafest-fixed/issues"
+  },
+  "homepage": "https://github.com/parrabalpiedra-a11y/a11y-nocturnafest-fixed#readme",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@playwright/test": "^1.65.1",
+    "http-server": "^14.1.1"
+  },
+  "private": true
+}
