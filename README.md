@@ -63,10 +63,9 @@ js/main.js                Comportamiento (pop-up, menú, temporizador, formulari
 img/                      Ilustraciones SVG
 favicon.svg
 tests/                    Tests de accesibilidad con Playwright y axe-core
-docs/presentacion/        Logos usados en la presentación
 .github/workflows/        Integración continua
 ```
 
 ## Licencia
 
-El código es [MIT](LICENSE) © Paula Arrabal Piedra. Los logos de `docs/presentacion/` pertenecen a sus respectivas empresas y no están incluidos en esa licencia.
+El código es [MIT](LICENSE) © Paula Arrabal Piedra.
